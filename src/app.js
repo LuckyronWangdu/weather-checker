@@ -24,30 +24,30 @@ app.use(express.static(pathtopublicdir))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather App',
-        name: 'Mr Robot'
+        name: 'LOKESH KUMAR'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About me!',
-        name: 'Mr Robot'
+        name: 'LOKESH KUMAR'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
         message: 'This will help you in case you get stuck !!',
-        title: 'Help page',
-        name: 'Mr Robot'
+        title: 'Help Page',
+        name: 'LOKESH KUMAR'
 
     })
 })
 
-
+//using the pre made functions to do the tasks of geocoding and weather forecasting..
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
-        return res.send({ error: 'Please provide a search address!!' })
+        return res.send({ error:'Please provide a search address!!' })
     }
     geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) {
@@ -66,38 +66,25 @@ app.get('/weather', (req, res) => {
     })
 })
 
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({ Error: 'Please provide with a search term!' })
-    }
-
-    console.log(req.query)
-    res.send({
-        products: []
-    })
-})
-
-
-
-
 app.get('/help/*', (req, res) => {
     res.render('404', {
-        title: 'Help not found!!',
-        name: 'Mr Robot',
-        errmessage: 'help document not found'
+        title: 'Help not found!',
+        name: 'LOKESH KUMAR',
+        errmessage: 'Help document not found'
     })
 })
+
 //404 handling 
 app.get('*', (req, res) => {
     res.render('404', {
         title: '404 Page',
-        name: 'Mr Robot',
-        errmessage: 'Page not found !'
+        name: 'LOKESH KUMAR',
+        errmessage: 'Page not found!'
     })
 })
 
 
-//for server starting at port 3000
+//for server starting at a port
 app.listen(port, () => {
     console.log('Server up and running at port'+port)
 })
